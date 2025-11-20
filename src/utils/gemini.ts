@@ -2,15 +2,14 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import "dotenv/config";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-console.log(GEMINI_API_KEY);
 
 if (!GEMINI_API_KEY) {
-  throw Error("No Gemini API key in .env");
+  throw new Error("No Gemini API key in .env");
 }
 
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
-const model = genAI.getGenerativeModel({ model: "models/gemini-1.5-pro" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 export async function getResponseFromBase64StrImg(
   prompt: string,
